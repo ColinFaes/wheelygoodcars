@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>WheelyGoodCars</title>
         @vite(['resources/css/app.scss', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark d-print-none bg-black">
@@ -15,11 +16,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-light" href="">Alle auto's</a></li>
-                            @auth
-                                <li class="nav-item"><a class="nav-link text-light" href="">Mijn aanbod</a></li>
-                                <li class="nav-item"><a class="nav-link text-light" href="">Aanbod plaatsen</a></li>
-                            @endauth
+                        <li class="nav-item"><a class="nav-link text-light" href="{{ route('show_all_cars') }}">Alle auto's</a></li>
+                        @auth
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('show_personal_cars') }}">Mijn aanbod</a></li>
+                            <li class="nav-item"><a class="nav-link text-light" href="{{ route('cars.createOffer') }}">Aanbod plaatsen</a></li>
+                        @endauth
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -38,5 +39,6 @@
         <div class="container">
             @yield('content')
         </div>
+        @livewireScripts
     </body>
 </html>
